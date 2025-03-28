@@ -2,9 +2,9 @@ package com.factory;
 
 import com.dataStore.UserDataStore;
 import com.dataStore.UserPairOwedAmountDataStore;
-import com.interfaces.IDataStoreFactory;
-import com.interfaces.IUserDataStore;
-import com.interfaces.IUserPairOwedAmountDataStore;
+import com.dataStore.interfaces.IUserDataStore;
+import com.dataStore.interfaces.IUserPairOwedAmountDataStore;
+import com.factory.interfaces.IDataStoreFactory;
 
 public class DataStoreFactory implements IDataStoreFactory {
 	private IUserDataStore userDataStore;

@@ -1,13 +1,13 @@
-package com.exactDivisionStrategy;
+package com.strategies.exactDivisionStrategy;
 
 import java.util.HashMap;
 import java.util.Iterator;
 
 import com.enums.InputValidationResult;
 import com.enums.SplitStrategyType;
-import com.interfaces.ISplitInput;
-import com.interfaces.ISplitStrategy;
-import com.splitObjects.SplitResult;
+import com.strategies.interfaces.ISplitInput;
+import com.strategies.interfaces.ISplitStrategy;
+import com.strategies.splitObjects.SplitResult;
 
 public class ExactDivisionSplitStrategy implements ISplitStrategy {
 

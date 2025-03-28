@@ -1,10 +1,10 @@
-package com.exactDivisionStrategy;
+package com.strategies.exactDivisionStrategy;
 
 import java.util.HashMap;
 import java.util.List;
 
 import com.enums.SplitStrategyType;
-import com.splitObjects.SplitInput;
+import com.strategies.splitObjects.SplitInput;
 
 public class ExactStrategySplitInput extends SplitInput {
 	

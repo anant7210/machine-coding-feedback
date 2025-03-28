@@ -1,4 +1,4 @@
-package com.splitObjects;
+package com.strategies.splitObjects;
 
 import java.util.HashMap;
 

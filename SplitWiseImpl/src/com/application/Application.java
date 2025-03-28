@@ -3,15 +3,15 @@ package com.application;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.dataStore.interfaces.IUserPairOwedAmountDataStore;
 import com.enums.SplitStrategyType;
+import com.factory.interfaces.IDataStoreFactory;
+import com.factory.interfaces.IStrategyListFactory;
 import com.interfaces.IApplication;
-import com.interfaces.IDataStoreFactory;
-import com.interfaces.IInputReader;
-import com.interfaces.ISplitInput;
 import com.interfaces.IStrategyList;
-import com.interfaces.IStrategyListFactory;
-import com.interfaces.IUserPairOwedAmountDataStore;
-import com.splitObjects.SplitResult;
+import com.ioParser.interfaces.IInputReader;
+import com.strategies.interfaces.ISplitInput;
+import com.strategies.splitObjects.SplitResult;
 
 public class Application implements IApplication {
 	

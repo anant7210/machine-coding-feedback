@@ -5,13 +5,13 @@ import java.util.HashMap;
 import java.util.List;
 
 import com.enums.SplitStrategyType;
-import com.equalDivisionStrategy.EqualStrategyInutGenerator;
-import com.exactDivisionStrategy.ExactStartegyInputGenerator;
-import com.interfaces.IInputReader;
-import com.interfaces.ISplitInput;
-import com.interfaces.IStrategyInputGenerator;
-import com.percentDivisionStrategy.PercentDivisionInputGenerator;
-import com.splitObjects.SplitInput;
+import com.ioParser.interfaces.IInputReader;
+import com.strategies.equalDivisionStrategy.EqualStrategyInutGenerator;
+import com.strategies.exactDivisionStrategy.ExactStartegyInputGenerator;
+import com.strategies.interfaces.ISplitInput;
+import com.strategies.interfaces.IStrategyInputGenerator;
+import com.strategies.percentDivisionStrategy.PercentDivisionInputGenerator;
+import com.strategies.splitObjects.SplitInput;
 
 public class InputReader implements IInputReader {
 	

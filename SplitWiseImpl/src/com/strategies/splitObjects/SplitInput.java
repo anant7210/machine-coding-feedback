@@ -1,8 +1,8 @@
-package com.splitObjects;
+package com.strategies.splitObjects;
 
 import java.util.List;
 
-import com.interfaces.ISplitInput;
+import com.strategies.interfaces.ISplitInput;
 
 public abstract class SplitInput implements ISplitInput {
 	public SplitInput(String paidBy, List<String> participants, double paidAmount) {

@@ -3,8 +3,8 @@ package com.dataStore;
 import java.util.HashMap;
 import java.util.Iterator;
 
-import com.interfaces.IUserPairOwedAmountDataStore;
-import com.splitObjects.SplitResult;
+import com.dataStore.interfaces.IUserPairOwedAmountDataStore;
+import com.strategies.splitObjects.SplitResult;
 
 public class UserPairOwedAmountDataStore implements IUserPairOwedAmountDataStore {
 	private HashMap<String, HashMap<String, Double>> owedByMap = new HashMap<String, HashMap<String,Double>>();

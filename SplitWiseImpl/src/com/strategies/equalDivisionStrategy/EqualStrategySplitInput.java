@@ -1,9 +1,9 @@
-package com.equalDivisionStrategy;
+package com.strategies.equalDivisionStrategy;
 
 import java.util.List;
 
 import com.enums.SplitStrategyType;
-import com.splitObjects.SplitInput;
+import com.strategies.splitObjects.SplitInput;
 
 public class EqualStrategySplitInput extends SplitInput {
 

@@ -1,13 +1,13 @@
-package com.percentDivisionStrategy;
+package com.strategies.percentDivisionStrategy;
 
 import java.util.HashMap;
 import java.util.Iterator;
 
 import com.enums.InputValidationResult;
 import com.enums.SplitStrategyType;
-import com.interfaces.ISplitInput;
-import com.interfaces.ISplitStrategy;
-import com.splitObjects.SplitResult;
+import com.strategies.interfaces.ISplitInput;
+import com.strategies.interfaces.ISplitStrategy;
+import com.strategies.splitObjects.SplitResult;
 
 public class PercentDivisionSplitStrategy implements ISplitStrategy {
 	static public double PERCENTAGE_100 = 100.0;

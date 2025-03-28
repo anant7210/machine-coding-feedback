@@ -1,10 +1,11 @@
-package com.exactDivisionStrategy;
+package com.strategies.exactDivisionStrategy;
 
 import java.util.HashMap;
 import java.util.List;
-import com.interfaces.ISplitInput;
-import com.splitObjects.SplitInput;
-import com.splitObjects.StrategyInputGenerator;
+
+import com.strategies.interfaces.ISplitInput;
+import com.strategies.splitObjects.SplitInput;
+import com.strategies.splitObjects.StrategyInputGenerator;
 
 public class ExactStartegyInputGenerator extends StrategyInputGenerator {
 	@Override

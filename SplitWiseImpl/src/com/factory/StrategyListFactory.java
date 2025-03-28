@@ -7,12 +7,12 @@ import java.util.List;
 import java.util.Map;
 
 import com.enums.SplitStrategyType;
-import com.equalDivisionStrategy.EqualDivisionSplitStrategy;
-import com.exactDivisionStrategy.ExactDivisionSplitStrategy;
-import com.interfaces.ISplitStrategy;
+import com.factory.interfaces.IStrategyListFactory;
 import com.interfaces.IStrategyList;
-import com.interfaces.IStrategyListFactory;
-import com.percentDivisionStrategy.PercentDivisionSplitStrategy;
+import com.strategies.equalDivisionStrategy.EqualDivisionSplitStrategy;
+import com.strategies.exactDivisionStrategy.ExactDivisionSplitStrategy;
+import com.strategies.interfaces.ISplitStrategy;
+import com.strategies.percentDivisionStrategy.PercentDivisionSplitStrategy;
 
 public class StrategyListFactory implements IStrategyListFactory {
 	

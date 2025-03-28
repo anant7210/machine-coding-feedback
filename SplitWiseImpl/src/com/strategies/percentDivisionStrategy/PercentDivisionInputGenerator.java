@@ -1,10 +1,11 @@
-package com.percentDivisionStrategy;
+package com.strategies.percentDivisionStrategy;
 
 import java.util.HashMap;
 import java.util.List;
-import com.interfaces.ISplitInput;
-import com.splitObjects.SplitInput;
-import com.splitObjects.StrategyInputGenerator;
+
+import com.strategies.interfaces.ISplitInput;
+import com.strategies.splitObjects.SplitInput;
+import com.strategies.splitObjects.StrategyInputGenerator;
 
 public class PercentDivisionInputGenerator extends StrategyInputGenerator {
 	@Override

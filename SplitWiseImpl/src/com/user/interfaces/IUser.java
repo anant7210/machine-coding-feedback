@@ -1,6 +1,6 @@
-package com.interfaces;
+package com.user.interfaces;
 
-import com.dataStore.UserDetails;
+import com.user.UserDetails;
 
 public interface IUser {
 	UserDetails getUserDetails(String userId);

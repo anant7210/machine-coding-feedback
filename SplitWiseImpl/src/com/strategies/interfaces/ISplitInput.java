@@ -1,4 +1,4 @@
-package com.interfaces;
+package com.strategies.interfaces;
 
 import com.enums.SplitStrategyType;
 

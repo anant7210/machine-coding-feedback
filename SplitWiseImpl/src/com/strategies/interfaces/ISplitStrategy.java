@@ -1,7 +1,7 @@
-package com.interfaces;
+package com.strategies.interfaces;
 import com.enums.InputValidationResult;
 import com.enums.SplitStrategyType;
-import com.splitObjects.SplitResult;
+import com.strategies.splitObjects.SplitResult;
 
 public interface ISplitStrategy {
 	InputValidationResult verifyInput(ISplitInput splitInput);

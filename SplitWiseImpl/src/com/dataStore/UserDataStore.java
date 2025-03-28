@@ -2,7 +2,8 @@ package com.dataStore;
 
 import java.util.HashMap;
 
-import com.interfaces.IUserDataStore;
+import com.dataStore.interfaces.IUserDataStore;
+import com.user.UserDetails;
 
 public class UserDataStore implements IUserDataStore {
 	HashMap<String, UserDetails> userDetailMap = new HashMap<String, UserDetails>();
