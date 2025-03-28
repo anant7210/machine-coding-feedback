@@ -9,8 +9,18 @@ import com.strategies.interfaces.ISplitInput;
 import com.strategies.interfaces.ISplitStrategy;
 import com.strategies.splitObjects.SplitResult;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class ExactDivisionSplitStrategy.
+ */
 public class ExactDivisionSplitStrategy implements ISplitStrategy {
 
+	/**
+	 * Verify input.
+	 *
+	 * @param splitInput the split input
+	 * @return the input validation result
+	 */
 	@Override
 	public InputValidationResult verifyInput(ISplitInput splitInput) {
 		ExactStrategySplitInput input;
@@ -42,6 +52,12 @@ public class ExactDivisionSplitStrategy implements ISplitStrategy {
 		}
 	}
 
+	/**
+	 * Gets the final split.
+	 *
+	 * @param splitInput the split input
+	 * @return the final split
+	 */
 	@Override
 	public SplitResult getFinalSplit(ISplitInput splitInput) {
 		if (this.verifyInput(splitInput) != InputValidationResult.VALID) {
@@ -86,6 +102,11 @@ public class ExactDivisionSplitStrategy implements ISplitStrategy {
 		return new SplitResult(owedByMap, owedToMap, owedMap, owesMap);
 	}
 
+	/**
+	 * Gets the spli strategy type.
+	 *
+	 * @return the spli strategy type
+	 */
 	@Override
 	public SplitStrategyType getSpliStrategyType() {
 		// TODO Auto-generated method stub

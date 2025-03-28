@@ -14,8 +14,15 @@ import com.strategies.exactDivisionStrategy.ExactDivisionSplitStrategy;
 import com.strategies.interfaces.ISplitStrategy;
 import com.strategies.percentDivisionStrategy.PercentDivisionSplitStrategy;
 
+// TODO: Auto-generated Javadoc
+/**
+ * A factory for creating StrategyList objects.
+ */
 public class StrategyListFactory implements IStrategyListFactory {
 	
+	/**
+	 * Instantiates a new strategy list factory.
+	 */
 	public StrategyListFactory() {
 		this.strategyMap.put(SplitStrategyType.EXACT, new ExactDivisionSplitStrategy());
 		this.strategyMap.put(SplitStrategyType.EQUAL, new EqualDivisionSplitStrategy());
@@ -24,10 +31,17 @@ public class StrategyListFactory implements IStrategyListFactory {
 
 
 
+	/** The strategy map. */
 	private HashMap<SplitStrategyType, ISplitStrategy> strategyMap = new HashMap<SplitStrategyType, ISplitStrategy>();
 	
 	
 
+	/**
+	 * Gets the strategy list.
+	 *
+	 * @param strategiesPresent the strategies present
+	 * @return the strategy list
+	 */
 	@Override
 	public IStrategyList getStrategyList(List<String> strategiesPresent) {
 		Map<SplitStrategyType, ISplitStrategy> result = new LinkedHashMap<SplitStrategyType, ISplitStrategy>();

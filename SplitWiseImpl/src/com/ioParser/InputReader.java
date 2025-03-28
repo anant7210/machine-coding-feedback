@@ -13,11 +13,19 @@ import com.strategies.interfaces.IStrategyInputGenerator;
 import com.strategies.percentDivisionStrategy.PercentDivisionInputGenerator;
 import com.strategies.splitObjects.SplitInput;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class InputReader.
+ */
 public class InputReader implements IInputReader {
 	
 	
+	/** The strategy input generator map. */
 	HashMap<SplitStrategyType, IStrategyInputGenerator> strategyInputGeneratorMap;
 	
+	/**
+	 * Instantiates a new input reader.
+	 */
 	public InputReader() {
 		this.strategyInputGeneratorMap = new HashMap<SplitStrategyType, IStrategyInputGenerator>();
 		
@@ -28,6 +36,12 @@ public class InputReader implements IInputReader {
 		this.strategyInputGeneratorMap.put(SplitStrategyType.PERCENT, new PercentDivisionInputGenerator());
 	}
 
+	/**
+	 * Parses the input.
+	 *
+	 * @param input the input
+	 * @return the i split input
+	 */
 	@Override
 	public ISplitInput parseInput(List<String> input) {
 		

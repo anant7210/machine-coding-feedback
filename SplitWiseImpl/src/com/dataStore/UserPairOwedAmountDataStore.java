@@ -6,11 +6,27 @@ import java.util.Iterator;
 import com.dataStore.interfaces.IUserPairOwedAmountDataStore;
 import com.strategies.splitObjects.SplitResult;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class UserPairOwedAmountDataStore.
+ */
 public class UserPairOwedAmountDataStore implements IUserPairOwedAmountDataStore {
+	
+	/** The owed by map. */
 	private HashMap<String, HashMap<String, Double>> owedByMap = new HashMap<String, HashMap<String,Double>>();
+	
+	/** The owes to map. */
 	private HashMap<String, HashMap<String, Double>> owesToMap = new HashMap<String, HashMap<String,Double>>();
 
 
+	/**
+	 * Update amount.
+	 *
+	 * @param userId1 the user id 1
+	 * @param userId2 the user id 2
+	 * @param amount the amount
+	 * @return true, if successful
+	 */
 	@Override
 	public boolean updateAmount(String userId1, String userId2, double amount) {
 		double amountOwed = amount;
@@ -46,6 +62,12 @@ public class UserPairOwedAmountDataStore implements IUserPairOwedAmountDataStore
 		return true;
 	}
 
+	/**
+	 * Gets the balances for user.
+	 *
+	 * @param userId the user id
+	 * @return the balances for user
+	 */
 	@Override
 	public SplitResult getBalancesForUser(String userId) {
 		SplitResult result = new SplitResult();
@@ -57,11 +79,22 @@ public class UserPairOwedAmountDataStore implements IUserPairOwedAmountDataStore
 		return result;
 	}
 
+	/**
+	 * Gets the balances for all users.
+	 *
+	 * @return the balances for all users
+	 */
 	@Override
 	public SplitResult getBalancesForAllUsers() {
 		return new SplitResult(owedByMap, owedByMap, null, null);
 	}
 
+	/**
+	 * Update amount for entries.
+	 *
+	 * @param splitResult the split result
+	 * @return true, if successful
+	 */
 	@Override
 	public boolean updateAmountForEntries(SplitResult splitResult) {
 		Iterator<String> it = splitResult.getOwedBy().keySet().iterator();

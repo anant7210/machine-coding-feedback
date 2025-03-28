@@ -13,16 +13,30 @@ import com.ioParser.interfaces.IInputReader;
 import com.strategies.interfaces.ISplitInput;
 import com.strategies.splitObjects.SplitResult;
 
+/**
+ * The Class Application.
+ */
 public class Application implements IApplication {
 	
+	/** The user pair owed amount data store. */
 	private IUserPairOwedAmountDataStore userPairOwedAmountDataStore;
 	
+	/** The strategy list. */
 	private IStrategyList strategyList;
 	
+	/** The input reader. */
 	private IInputReader inputReader;
 	
 	
 	
+	/**
+	 * Instantiates a new application.
+	 *
+	 * @param dataStoreFactory the data store factory
+	 * @param strategyListFactory the strategy list factory
+	 * @param strategiesPresnt the strategies presnt
+	 * @param inputReader the input reader
+	 */
 	Application(IDataStoreFactory dataStoreFactory, IStrategyListFactory strategyListFactory, List<String> strategiesPresnt, IInputReader inputReader) {
 
 		this.userPairOwedAmountDataStore = dataStoreFactory.getUserPairOwedAmountDataStore();
@@ -32,7 +46,16 @@ public class Application implements IApplication {
 		this.inputReader = inputReader;
 	}
 
+	/**
+	 * Adds the expense.
+	 *
+	 * @param expenseInput the expense input
+	 * @return true, if successful
+	 */
 	@Override
+	/**
+	 * 
+	 */
 	public boolean addExpense(List<String> expenseInput) {
 		ISplitInput splitInput = this.inputReader.parseInput(expenseInput);
 		
@@ -45,18 +68,35 @@ public class Application implements IApplication {
 		return this.userPairOwedAmountDataStore.updateAmountForEntries(splitResult);
 	}
 
+	
+	/**
+	 * Gets the balance for user.
+	 *
+	 * @param userId the user id
+	 * @return the balance for user
+	 */
 	@Override
 	public SplitResult getBalanceForUser(String userId) {
 		
 		return this.getBalanceForUser(userId);
 	}
 
+	/**
+	 * Gets the all balances.
+	 *
+	 * @return the all balances
+	 */
 	@Override
 	public SplitResult getAllBalances() {
 		// TODO Auto-generated method stub
 		return this.userPairOwedAmountDataStore.getBalancesForAllUsers();
 	}
 
+	/**
+	 * Gets the strategies name.
+	 *
+	 * @return the strategies name
+	 */
 	@Override
 	public List<SplitStrategyType> getStrategiesName() {
 		return new ArrayList<SplitStrategyType>(this.strategyList.getSplitStrategies().keySet());

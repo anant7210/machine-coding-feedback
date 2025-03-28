@@ -5,14 +5,32 @@ import java.util.HashMap;
 import com.dataStore.interfaces.IUserDataStore;
 import com.user.UserDetails;
 
+/**
+ * The Class UserDataStore.
+ */
 public class UserDataStore implements IUserDataStore {
+	
+	/** The user detail map. */
 	HashMap<String, UserDetails> userDetailMap = new HashMap<String, UserDetails>();
+	
+	/**
+	 * Gets the user details.
+	 *
+	 * @param userId the user id
+	 * @return the user details
+	 */
 	@Override
 	public UserDetails getUserDetails(String userId) {
 		// TODO Auto-generated method stub
 		return this.userDetailMap.get(userId);
 	}
 
+	/**
+	 * Adds the new user.
+	 *
+	 * @param userDetails the user details
+	 * @return true, if successful
+	 */
 	@Override
 	public boolean addNewUser(UserDetails userDetails) {
 		if (userDetails != null && userDetails.getUserId() != null && !userDetails.getUserId().equals("")) {
@@ -24,6 +42,12 @@ public class UserDataStore implements IUserDataStore {
 		return false;
 	}
 
+	/**
+	 * Delete user.
+	 *
+	 * @param userId the user id
+	 * @return true, if successful
+	 */
 	@Override
 	public boolean deleteUser(String userId) {
 		if (userId != null && !userId.equals("")) {
@@ -34,6 +58,13 @@ public class UserDataStore implements IUserDataStore {
 		return false;
 	}
 
+	/**
+	 * Update user details.
+	 *
+	 * @param userId the user id
+	 * @param userDetails the user details
+	 * @return true, if successful
+	 */
 	@Override
 	public boolean updateUserDetails(String userId, UserDetails userDetails) {
 		if (userId != null && !userId.equals("") && userDetails != null) {

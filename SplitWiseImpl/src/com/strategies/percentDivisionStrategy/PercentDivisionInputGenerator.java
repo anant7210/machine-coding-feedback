@@ -7,7 +7,20 @@ import com.strategies.interfaces.ISplitInput;
 import com.strategies.splitObjects.SplitInput;
 import com.strategies.splitObjects.StrategyInputGenerator;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class PercentDivisionInputGenerator.
+ */
 public class PercentDivisionInputGenerator extends StrategyInputGenerator {
+	
+	/**
+	 * Generate split input.
+	 *
+	 * @param baseInput the base input
+	 * @param input the input
+	 * @param lastVisitedIndex the last visited index
+	 * @return the percent division split input
+	 */
 	@Override
 	public PercentDivisionSplitInput generateSplitInput(ISplitInput baseInput, List<String> input, int lastVisitedIndex) {
 		SplitInput baseInput2 = super.generateSplitInput(baseInput, input, lastVisitedIndex);

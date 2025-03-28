@@ -9,13 +9,26 @@ import com.strategies.interfaces.ISplitInput;
 import com.strategies.interfaces.ISplitStrategy;
 import com.strategies.splitObjects.SplitResult;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class EqualDivisionSplitStrategy.
+ */
 public class EqualDivisionSplitStrategy implements ISplitStrategy {
 	
 	
+	/**
+	 * Instantiates a new equal division split strategy.
+	 */
 	public EqualDivisionSplitStrategy() {
 		// TODO Auto-generated constructor stub
 	}
 
+	/**
+	 * Gets the final split.
+	 *
+	 * @param splitInput the split input
+	 * @return the final split
+	 */
 	@Override
 	public SplitResult getFinalSplit(ISplitInput splitInput) {
 		
@@ -65,6 +78,12 @@ public class EqualDivisionSplitStrategy implements ISplitStrategy {
 		
 	}
 
+	/**
+	 * Verify input.
+	 *
+	 * @param splitInput the split input
+	 * @return the input validation result
+	 */
 	@Override
 	public InputValidationResult verifyInput(ISplitInput splitInput) {
 		try {
@@ -78,6 +97,11 @@ public class EqualDivisionSplitStrategy implements ISplitStrategy {
 		}
 	}
 
+	/**
+	 * Gets the spli strategy type.
+	 *
+	 * @return the spli strategy type
+	 */
 	@Override
 	public SplitStrategyType getSpliStrategyType() {
 		// TODO Auto-generated method stub
