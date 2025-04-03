@@ -15,19 +15,37 @@ import com.ioParser.interfaces.IResultFormatter;
 import com.strategies.splitObjects.SplitResult;
 import com.user.UserDetails;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class ApplicationInterface.
+ */
 public class ApplicationInterface implements IApplicationInterface {
 	
+	/** The application. */
 	private IApplication application;
 	
 	
+	/** The data store factory. */
 	private IDataStoreFactory dataStoreFactory;
 	
+	/** The strategy list factory. */
 	private IStrategyListFactory strategyListFactory;
 	
+	/** The result formatter. */
 	private IResultFormatter resultFormatter;
+	
+	/** The input reader. */
 	private IInputReader inputReader;
 	
 	
+	/**
+	 * Instantiates a new application interface.
+	 *
+	 * @param dataStoreFactory the data store factory
+	 * @param strategyListFactory the strategy list factory
+	 * @param resultFormatter the result formatter
+	 * @param inputReader the input reader
+	 */
 	public ApplicationInterface(IDataStoreFactory dataStoreFactory, IStrategyListFactory strategyListFactory,
 			IResultFormatter resultFormatter, IInputReader inputReader) {
 		super();
@@ -37,12 +55,21 @@ public class ApplicationInterface implements IApplicationInterface {
 		this.inputReader = inputReader;
 	}
 
+	/**
+	 * Instantiate application.
+	 */
 	@Override
 	public void instantiateApplication() {
 		this.application = new Application(dataStoreFactory, strategyListFactory, Arrays.asList((String) SplitStrategyType.EQUAL.name(),(String) SplitStrategyType.EXACT.name(), (String)SplitStrategyType.PERCENT.name()));
 		
 	}
 
+	/**
+	 * Run input string.
+	 *
+	 * @param input the input
+	 * @return the list
+	 */
 	@Override
 	public List<String> runInputString(String input) {
 		String[] inputArr = input.split(" ");
@@ -81,6 +108,12 @@ public class ApplicationInterface implements IApplicationInterface {
 		
 	}
 
+	/**
+	 * Adds the new user.
+	 *
+	 * @param userDetails the user details
+	 * @return true, if successful
+	 */
 	@Override
 	public boolean addNewUser(UserDetails userDetails) {
 		return this.dataStoreFactory.getUserDataStore().addNewUser(userDetails);
