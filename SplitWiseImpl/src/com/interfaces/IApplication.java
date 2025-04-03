@@ -3,6 +3,7 @@ package com.interfaces;
 import java.util.List;
 
 import com.enums.SplitStrategyType;
+import com.strategies.interfaces.ISplitInput;
 import com.strategies.splitObjects.SplitResult;
 
 // TODO: Auto-generated Javadoc
@@ -17,7 +18,7 @@ public interface IApplication {
 	 * @param expenseInput the expense input
 	 * @return true, if successful
 	 */
-	boolean addExpense(List<String> expenseInput);
+	boolean addExpense(ISplitInput splitInput);
 	
 	/**
 	 * Gets the balance for user.

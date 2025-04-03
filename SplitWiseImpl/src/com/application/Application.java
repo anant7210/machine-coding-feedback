@@ -9,7 +9,6 @@ import com.factory.interfaces.IDataStoreFactory;
 import com.factory.interfaces.IStrategyListFactory;
 import com.interfaces.IApplication;
 import com.interfaces.IStrategyList;
-import com.ioParser.interfaces.IInputReader;
 import com.strategies.interfaces.ISplitInput;
 import com.strategies.splitObjects.SplitResult;
 
@@ -24,8 +23,6 @@ public class Application implements IApplication {
 	/** The strategy list. */
 	private IStrategyList strategyList;
 	
-	/** The input reader. */
-	private IInputReader inputReader;
 	
 	
 	
@@ -37,13 +34,11 @@ public class Application implements IApplication {
 	 * @param strategiesPresnt the strategies presnt
 	 * @param inputReader the input reader
 	 */
-	Application(IDataStoreFactory dataStoreFactory, IStrategyListFactory strategyListFactory, List<String> strategiesPresnt, IInputReader inputReader) {
+	Application(IDataStoreFactory dataStoreFactory, IStrategyListFactory strategyListFactory, List<String> strategiesPresnt) {
 
 		this.userPairOwedAmountDataStore = dataStoreFactory.getUserPairOwedAmountDataStore();
 		
 		this.strategyList = strategyListFactory.getStrategyList(strategiesPresnt);
-		
-		this.inputReader = inputReader;
 	}
 
 	/**
@@ -56,14 +51,15 @@ public class Application implements IApplication {
 	/**
 	 * 
 	 */
-	public boolean addExpense(List<String> expenseInput) {
-		ISplitInput splitInput = this.inputReader.parseInput(expenseInput);
+	public boolean addExpense(ISplitInput splitInput) {
 		
 		if (splitInput == null) {
 			return false;
 		}
 		
 		SplitResult splitResult = this.strategyList.getSplitStrategies().get(splitInput.getSplitInputType()).getFinalSplit(splitInput);
+		
+		// System.out.println("result " + splitResult.getOwedBy() + " " + splitResult.getOwedTo());
 		
 		return this.userPairOwedAmountDataStore.updateAmountForEntries(splitResult);
 	}
@@ -78,7 +74,7 @@ public class Application implements IApplication {
 	@Override
 	public SplitResult getBalanceForUser(String userId) {
 		
-		return this.getBalanceForUser(userId);
+		return this.userPairOwedAmountDataStore.getBalancesForUser(userId);
 	}
 
 	/**
