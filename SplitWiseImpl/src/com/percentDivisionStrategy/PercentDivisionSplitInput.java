@@ -1,10 +1,10 @@
-package com.strategies.percentDivisionStrategy;
+package com.percentDivisionStrategy;
 
 import java.util.HashMap;
 import java.util.List;
 
 import com.enums.SplitStrategyType;
-import com.strategies.splitObjects.SplitInput;
+import com.splitObjects.SplitInput;
 
 public class PercentDivisionSplitInput extends SplitInput {
 	private HashMap<String, Double> percentOwedMap;

@@ -1,9 +1,9 @@
-package com.strategies.splitObjects;
+package com.splitObjects;
 
 import java.util.List;
 
-import com.strategies.interfaces.ISplitInput;
-import com.strategies.interfaces.IStrategyInputGenerator;
+import com.interfaces.ISplitInput;
+import com.interfaces.IStrategyInputGenerator;
 
 public abstract class StrategyInputGenerator implements IStrategyInputGenerator {
 

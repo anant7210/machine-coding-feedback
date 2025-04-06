@@ -1,4 +1,4 @@
-package com.user;
+package com.dataStore;
 
 public class UserDetails {
 

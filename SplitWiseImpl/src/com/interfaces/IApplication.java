@@ -3,7 +3,7 @@ package com.interfaces;
 import java.util.List;
 
 import com.enums.SplitStrategyType;
-import com.strategies.splitObjects.SplitResult;
+import com.splitObjects.SplitResult;
 
 public interface IApplication {
 	boolean addExpense(List<String> expenseInput);
