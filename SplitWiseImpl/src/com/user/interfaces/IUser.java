@@ -14,7 +14,7 @@ public interface IUser {
 	 * @param userId the user id
 	 * @return the user details
 	 */
-	UserDetails getUserDetails();
+	UserDetails getUserDetails(String userId);
 	
 	/**
 	 * Update user details.
@@ -23,5 +23,5 @@ public interface IUser {
 	 * @param userDetails the user details
 	 * @return true, if successful
 	 */
-	boolean updateUserDetails(UserDetails userDetails);
+	boolean updateUserDetails(String userId, UserDetails userDetails);
 }
