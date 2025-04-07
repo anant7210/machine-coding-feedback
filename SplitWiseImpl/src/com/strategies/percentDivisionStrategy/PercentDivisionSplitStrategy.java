@@ -86,7 +86,7 @@ public class PercentDivisionSplitStrategy implements ISplitStrategy {
 			}
 			
 			
-			owedToMap.get(next).put(input.getPaidBy(), amountOwed);
+			owedToMap.get(next).put(input.getPaidBy(), input.getPercentOwedMap().get(next));
 			
 			owesMap.put(next, amountOwed);
 			

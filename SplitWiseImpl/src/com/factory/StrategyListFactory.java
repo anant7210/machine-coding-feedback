@@ -43,7 +43,6 @@ public class StrategyListFactory implements IStrategyListFactory {
 	 * @return the strategy list
 	 */
 	@Override
-	
 	public IStrategyList getStrategyList(List<String> strategiesPresent) {
 		Map<SplitStrategyType, ISplitStrategy> result = new LinkedHashMap<SplitStrategyType, ISplitStrategy>();
 		
