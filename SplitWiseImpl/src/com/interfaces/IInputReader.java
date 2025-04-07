@@ -1,8 +1,6 @@
-package com.ioParser.interfaces;
+package com.interfaces;
 
 import java.util.List;
-
-import com.strategies.interfaces.ISplitInput;
 
 public interface IInputReader {
 	ISplitInput parseInput(List<String> input);

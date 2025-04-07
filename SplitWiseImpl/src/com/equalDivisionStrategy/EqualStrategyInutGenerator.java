@@ -1,10 +1,10 @@
-package com.strategies.equalDivisionStrategy;
+package com.equalDivisionStrategy;
 
 import java.util.List;
 
-import com.strategies.interfaces.ISplitInput;
-import com.strategies.splitObjects.SplitInput;
-import com.strategies.splitObjects.StrategyInputGenerator;
+import com.interfaces.ISplitInput;
+import com.splitObjects.SplitInput;
+import com.splitObjects.StrategyInputGenerator;
 
 public class EqualStrategyInutGenerator extends StrategyInputGenerator {
 	

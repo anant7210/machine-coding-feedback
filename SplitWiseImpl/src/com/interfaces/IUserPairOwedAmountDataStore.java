@@ -1,6 +1,6 @@
-package com.dataStore.interfaces;
+package com.interfaces;
 
-import com.strategies.splitObjects.SplitResult;
+import com.splitObjects.SplitResult;
 
 public interface IUserPairOwedAmountDataStore {
 	boolean updateAmount(String userId1, String userId2, double amount);

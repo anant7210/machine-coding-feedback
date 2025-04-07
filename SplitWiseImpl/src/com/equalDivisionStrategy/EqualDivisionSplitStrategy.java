@@ -1,13 +1,13 @@
-package com.strategies.equalDivisionStrategy;
+package com.equalDivisionStrategy;
 
 import java.util.HashMap;
 import java.util.ListIterator;
 
 import com.enums.InputValidationResult;
 import com.enums.SplitStrategyType;
-import com.strategies.interfaces.ISplitInput;
-import com.strategies.interfaces.ISplitStrategy;
-import com.strategies.splitObjects.SplitResult;
+import com.interfaces.ISplitInput;
+import com.interfaces.ISplitStrategy;
+import com.splitObjects.SplitResult;
 
 public class EqualDivisionSplitStrategy implements ISplitStrategy {
 	
