@@ -12,16 +12,32 @@ import com.exceptions.DataFormatIncorrectException;
 import com.factories.interfaces.IAttributeKeyValueMapFactory;
 import com.map.interfaces.IKeyValueMap;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class KeyValueMap.
+ *
+ * @param <Key> the generic type
+ * @param <AttributeKey> the generic type
+ * @param <AttributeValue> the generic type
+ */
 public class KeyValueMap<Key extends Object, AttributeKey extends Object, AttributeValue extends Object> implements IKeyValueMap<Key, AttributeKey, AttributeValue> {
 	
+	/** The attribute map. */
 	private HashMap<AttributeKey, IAttributeKeyValueMap<Key, AttributeValue>> attributeMap;
 	
+	/** The key attribute map. */
 	private HashMap<Key, List<AttributeKey>> keyAttributeMap;
 	
+	/** The attribute key value map factory. */
 	private IAttributeKeyValueMapFactory attributeKeyValueMapFactory;
 	
 	
 
+	/**
+	 * Instantiates a new key value map.
+	 *
+	 * @param attributeKeyValueMapFactory the attribute key value map factory
+	 */
 	public KeyValueMap(IAttributeKeyValueMapFactory attributeKeyValueMapFactory) {
 		this.attributeKeyValueMapFactory = attributeKeyValueMapFactory;
 		this.attributeMap = new HashMap<AttributeKey, IAttributeKeyValueMap<Key, AttributeValue>>();
@@ -29,6 +45,12 @@ public class KeyValueMap<Key extends Object, AttributeKey extends Object, Attrib
 		this.keyAttributeMap = new HashMap<Key, List<AttributeKey>>();
 	}
 
+	/**
+	 * Gets the.
+	 *
+	 * @param key the key
+	 * @return the i value attribute
+	 */
 	@Override
 	public IValueAttribute<AttributeKey, AttributeValue> get(Key key) {
 		IValueAttribute<AttributeKey, AttributeValue> value = new ValueAttribute<AttributeKey, AttributeValue>();
@@ -50,6 +72,13 @@ public class KeyValueMap<Key extends Object, AttributeKey extends Object, Attrib
 		return value;
 	}
 
+	/**
+	 * Put.
+	 *
+	 * @param key the key
+	 * @param value the value
+	 * @throws DataFormatIncorrectException the data format incorrect exception
+	 */
 	@Override
 	public void put(Key key, IValueAttribute<AttributeKey, AttributeValue> value) throws DataFormatIncorrectException {
 		if (this.keyAttributeMap.containsKey(key)) {
@@ -78,6 +107,14 @@ public class KeyValueMap<Key extends Object, AttributeKey extends Object, Attrib
 		
 	}
 
+	/**
+	 * Gets the key containing attribute key value pair.
+	 *
+	 * @param attribute the attribute
+	 * @param value the value
+	 * @return the key containing attribute key value pair
+	 * @throws DataFormatIncorrectException the data format incorrect exception
+	 */
 	@Override
 	public List<Key> getKeyContainingAttributeKeyValuePair(AttributeKey attribute, AttributeValue value) throws DataFormatIncorrectException {
 		
@@ -87,6 +124,11 @@ public class KeyValueMap<Key extends Object, AttributeKey extends Object, Attrib
 		return this.attributeMap.get(attribute).getkeysWithValues(value);
 	}
 
+	/**
+	 * Gets the keys.
+	 *
+	 * @return the keys
+	 */
 	@Override
 	public List<Key> getKeys() {
 		List<Key> keys = new ArrayList<Key>();
@@ -100,6 +142,11 @@ public class KeyValueMap<Key extends Object, AttributeKey extends Object, Attrib
 		return keys;
 	}
 
+	/**
+	 * Delete key.
+	 *
+	 * @param key the key
+	 */
 	@Override
 	public void deleteKey(Key key) {
 		if (!this.keyAttributeMap.containsKey(key)) {

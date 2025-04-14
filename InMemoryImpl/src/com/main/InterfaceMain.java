@@ -3,13 +3,21 @@ package com.main;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-import java.util.stream.Stream;
 
 import com.keyvalueStore.KeyValueStoreInterface;
 import com.keyvalueStore.interfaces.IKeyValueStoreInterface;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class InterfaceMain.
+ */
 public class InterfaceMain {
 
+	/**
+	 * The main method.
+	 *
+	 * @param args the arguments
+	 */
 	public static void main(String[] args) {
 		IKeyValueStoreInterface keyValueStoreInterface = new KeyValueStoreInterface();
 		

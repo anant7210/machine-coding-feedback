@@ -16,15 +16,25 @@ import com.ioParser.interfaces.IResultFormatter;
 import com.keyvalueStore.interfaces.IKeyValueStore;
 import com.keyvalueStore.interfaces.IKeyValueStoreInterface;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class KeyValueStoreInterface.
+ */
 public class KeyValueStoreInterface implements IKeyValueStoreInterface {
 
+	/** The key value store. */
 	private IKeyValueStore<String, String, String> keyValueStore;
 	
+	/** The result formatter. */
 	private IResultFormatter<String, String, String> resultFormatter;
 	
+	/** The input formatter. */
 	private IInputFormatter<String, String, String> inputFormatter;
 	
 	
+	/**
+	 * Instantiates a new key value store interface.
+	 */
 	public KeyValueStoreInterface() {
 		this.keyValueStore = new KeyValueStore<String, String, String>(new KeyValueMapFactory());
 		this.inputFormatter = new InputFormatter();
@@ -33,6 +43,12 @@ public class KeyValueStoreInterface implements IKeyValueStoreInterface {
 	}
 
 
+	/**
+	 * Return result.
+	 *
+	 * @param input the input
+	 * @return the list
+	 */
 	@Override
 	public List<String> returnResult(List<String> input) {
 		List<String> result = new ArrayList<String>();
@@ -50,6 +66,13 @@ public class KeyValueStoreInterface implements IKeyValueStoreInterface {
 		return result;
 	}
 	
+	/**
+	 * Process input.
+	 *
+	 * @param inputString the input string
+	 * @return the string
+	 * @throws KeyValueStoreException the key value store exception
+	 */
 	private String processInput(String inputString) throws KeyValueStoreException {
 		String[] parts = inputString.split(" ");
 		
@@ -87,12 +110,25 @@ public class KeyValueStoreInterface implements IKeyValueStoreInterface {
 	}
 
 
+	/**
+	 * Parses the and execute KEYS operation.
+	 *
+	 * @return the string
+	 * @throws KeyValueStoreException the key value store exception
+	 */
 	private String parseAndExecuteKEYSOperation() throws KeyValueStoreException {
 		
 		return this.resultFormatter.getResultString(this.keyValueStore.keys());
 	}
 
 
+	/**
+	 * Parses the and execute GET operation.
+	 *
+	 * @param parts the parts
+	 * @return the string
+	 * @throws KeyValueStoreException the key value store exception
+	 */
 	private String parseAndExecuteGETOperation(String[] parts) throws KeyValueStoreException {
 		
 		String input = this.inputFormatter.parseGetOperationInput(parts);
@@ -108,6 +144,13 @@ public class KeyValueStoreInterface implements IKeyValueStoreInterface {
 	}
 
 
+	/**
+	 * Parses the and execute DELETE operation.
+	 *
+	 * @param parts the parts
+	 * @return the string
+	 * @throws KeyValueStoreException the key value store exception
+	 */
 	private String parseAndExecuteDELETEOperation(String[] parts) throws KeyValueStoreException {
 		
 		
@@ -117,6 +160,13 @@ public class KeyValueStoreInterface implements IKeyValueStoreInterface {
 	}
 
 
+	/**
+	 * Parses the and execute PUT operation.
+	 *
+	 * @param parts the parts
+	 * @return the string
+	 * @throws KeyValueStoreException the key value store exception
+	 */
 	private String parseAndExecutePUTOperation(String[] parts) throws KeyValueStoreException {
 		Pair<String, List<Pair<String, String>>> input = this.inputFormatter.parsePutOperationInput(parts);
 		
@@ -125,6 +175,13 @@ public class KeyValueStoreInterface implements IKeyValueStoreInterface {
 		return "";
 	}
 	
+	/**
+	 * Parses the and execute SEARCH operation.
+	 *
+	 * @param parts the parts
+	 * @return the string
+	 * @throws KeyValueStoreException the key value store exception
+	 */
 	private String parseAndExecuteSEARCHOperation(String[] parts) throws KeyValueStoreException {
 		Pair<String, String> input = this.inputFormatter.parseSearchOperationInput(parts);
 		List<String> result = this.keyValueStore.search(input.getKey(), input.getValue());

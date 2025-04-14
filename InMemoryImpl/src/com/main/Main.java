@@ -10,8 +10,18 @@ import com.keyvalueStore.KeyValueStore;
 import com.keyvalueStore.interfaces.IKeyValueStore;
 import com.map.KeyValueMap;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class Main.
+ */
 public class Main {
 
+	/**
+	 * The main method.
+	 *
+	 * @param args the arguments
+	 * @throws DataFormatIncorrectException the data format incorrect exception
+	 */
 	public static void main(String[] args) throws DataFormatIncorrectException {
 		IKeyValueStore<String, String, String> keyValueStore = new KeyValueStore<>(new KeyValueMapFactory());
 		
