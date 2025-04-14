@@ -4,15 +4,15 @@ import java.util.List;
 
 import com.exceptions.DataFormatIncorrectException;
 
-public interface IAttributeKeyValueMap {
-	String get(String key);
-	void put(String key, String value) throws DataFormatIncorrectException;
+public interface IAttributeKeyValueMap<K, V> {
+	V get(K key);
+	void put(K key, V value) throws DataFormatIncorrectException;
 	
-	boolean containsKey(String key);
+	boolean containsKey(K key);
 	
-	boolean isValidType(String value);
+	boolean isValidType(V value);
 	
-	List<String> getkeysWithValues(String value) throws DataFormatIncorrectException;
+	List<K> getkeysWithValues(V value) throws DataFormatIncorrectException;
 	
-	void deleteKey(String key);
+	void deleteKey(K key);
  }

@@ -7,7 +7,7 @@ public interface IValueAttribute<K, V> {
 	
 	void setAttribute(K key, V value);
 	
-	String getAttribute(K key);
+	V getAttribute(K key);
 	
 	List<K> getAttributeKeys();
 }

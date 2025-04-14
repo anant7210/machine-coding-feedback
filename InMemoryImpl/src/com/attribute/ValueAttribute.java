@@ -8,40 +8,40 @@ import java.util.List;
 import com.attribute.interfaces.IValueAttribute;
 import com.commonClasses.Pair;
 
-public class ValueAttribute implements IValueAttribute<String, String> {
+public class ValueAttribute<Key, Value> implements IValueAttribute<Key, Value> {
 	
-	HashMap<String, String> attributeKeyValueMap;
+	HashMap<Key, Value> attributeKeyValueMap;
 
 	public ValueAttribute() {
-		this.attributeKeyValueMap = new HashMap<String, String>();
+		this.attributeKeyValueMap = new HashMap<Key, Value>();
 	}
 	
-	public ValueAttribute(List<Pair<String, String>> attributekeyValueList) {
+	public ValueAttribute(List<Pair<Key, Value>> attributekeyValueList) {
 		this();
-		Iterator<Pair<String, String>> it =  attributekeyValueList.listIterator();
+		Iterator<Pair<Key, Value>> it =  attributekeyValueList.listIterator();
 		
 		while (it.hasNext()) {
-			Pair<String, String> next = it.next();
+			Pair<Key, Value> next = it.next();
 			this.attributeKeyValueMap.put(next.getKey(), next.getValue());
 		}
 	}
 	
 	@Override
-	public void setAttribute(String key, String value) {
+	public void setAttribute(Key key, Value value) {
 		this.attributeKeyValueMap.put(key, value);
 
 	}
 
 	@Override
-	public String getAttribute(String key) {
+	public Value getAttribute(Key key) {
 		return this.attributeKeyValueMap.get(key);
 	}
 
 	@Override
-	public List<String> getAttributeKeys() {
-		List<String> attributeKeys = new ArrayList<String>();
+	public List<Key> getAttributeKeys() {
+		List<Key> attributeKeys = new ArrayList<Key>();
 		
-		Iterator<String> it =  this.attributeKeyValueMap.keySet().iterator();
+		Iterator<Key> it =  this.attributeKeyValueMap.keySet().iterator();
 		
 		while (it.hasNext()) {
 			attributeKeys.add(it.next());
@@ -54,12 +54,12 @@ public class ValueAttribute implements IValueAttribute<String, String> {
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
 		
-		Iterator<String> it  = this.attributeKeyValueMap.keySet().iterator();
+		Iterator<Key> it  = this.attributeKeyValueMap.keySet().iterator();
 		
 		while (it.hasNext()) {
-			String next = it.next();
+			Key next = it.next();
 			
-			String value = this.attributeKeyValueMap.get(next);
+			Value value = this.attributeKeyValueMap.get(next);
 			
 			sb.append(next);
 			sb.append(": ");

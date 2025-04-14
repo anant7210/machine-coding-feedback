@@ -7,15 +7,15 @@ import com.commonClasses.Pair;
 import com.exceptions.DataFormatIncorrectException;
 
 
-public interface IKeyValueStore {
+public interface IKeyValueStore<Key extends Object, AttributeKey extends Object, AttributeValue extends Object> {
 	
-	IValueAttribute<String, String> get(String key);
+	IValueAttribute<AttributeKey, AttributeValue> get(Key key);
 	
-	List<String> search(String attributeKey, String attributeValue) throws DataFormatIncorrectException;
+	List<Key> search(AttributeKey attributeKey, AttributeValue attributeValue) throws DataFormatIncorrectException;
 	
-	void put(String key, List<Pair<String, String>> listOfAttributesPair) throws DataFormatIncorrectException;
+	void put(Key key, List<Pair<AttributeKey, AttributeValue>> listOfAttributesPair) throws DataFormatIncorrectException;
 	
-	void delete(String key);
+	void delete(Key key);
 	
-	List<String> keys();
+	List<Key> keys();
 }

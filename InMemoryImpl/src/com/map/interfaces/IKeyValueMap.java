@@ -5,15 +5,15 @@ import java.util.List;
 import com.attribute.interfaces.IValueAttribute;
 import com.exceptions.DataFormatIncorrectException;
 
-public interface IKeyValueMap {
-	IValueAttribute<String, String> get(String key);
+public interface IKeyValueMap<Key extends Object, AttributeKey extends Object, AttributeValue extends Object> {
+	IValueAttribute<AttributeKey, AttributeValue> get(Key key);
 	
-	void put(String key, IValueAttribute<String, String> value) throws DataFormatIncorrectException;
+	void put(Key key, IValueAttribute<AttributeKey, AttributeValue> value) throws DataFormatIncorrectException;
 	
-	List<String> getKeyContainingAttributeKeyValuePair(String attribute, String value) throws DataFormatIncorrectException;
+	List<Key> getKeyContainingAttributeKeyValuePair(AttributeKey attribute, AttributeValue value) throws DataFormatIncorrectException;
 	
-	List<String> getKeys();
+	List<Key> getKeys();
 	
-	void deleteKey(String key);
+	void deleteKey(Key key);
 
 }

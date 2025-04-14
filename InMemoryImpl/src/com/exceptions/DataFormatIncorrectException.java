@@ -1,6 +1,6 @@
 package com.exceptions;
 
-public class DataFormatIncorrectException extends Exception {
+public class DataFormatIncorrectException extends KeyValueStoreException {
 
 	/**
 	 * 

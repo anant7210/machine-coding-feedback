@@ -12,11 +12,11 @@ import com.exceptions.DataFormatIncorrectException;
 import com.factories.interfaces.IAttributeKeyValueMapFactory;
 import com.map.interfaces.IKeyValueMap;
 
-public class KeyValueMap implements IKeyValueMap {
+public class KeyValueMap<Key extends Object, AttributeKey extends Object, AttributeValue extends Object> implements IKeyValueMap<Key, AttributeKey, AttributeValue> {
 	
-	private HashMap<String, IAttributeKeyValueMap> attributeMap;
+	private HashMap<AttributeKey, IAttributeKeyValueMap<Key, AttributeValue>> attributeMap;
 	
-	private HashMap<String, List<String>> keyAttributeMap;
+	private HashMap<Key, List<AttributeKey>> keyAttributeMap;
 	
 	private IAttributeKeyValueMapFactory attributeKeyValueMapFactory;
 	
@@ -24,46 +24,46 @@ public class KeyValueMap implements IKeyValueMap {
 
 	public KeyValueMap(IAttributeKeyValueMapFactory attributeKeyValueMapFactory) {
 		this.attributeKeyValueMapFactory = attributeKeyValueMapFactory;
-		this.attributeMap = new HashMap<String, IAttributeKeyValueMap>();
+		this.attributeMap = new HashMap<AttributeKey, IAttributeKeyValueMap<Key, AttributeValue>>();
 		
-		this.keyAttributeMap = new HashMap<String, List<String>>();
+		this.keyAttributeMap = new HashMap<Key, List<AttributeKey>>();
 	}
 
 	@Override
-	public IValueAttribute<String, String> get(String key) {
-		IValueAttribute<String, String> value = new ValueAttribute();
+	public IValueAttribute<AttributeKey, AttributeValue> get(Key key) {
+		IValueAttribute<AttributeKey, AttributeValue> value = new ValueAttribute<AttributeKey, AttributeValue>();
 		
 		if (!this.keyAttributeMap.containsKey(key)) {
 			return null;
 		}
 		
-		List<String> attributeList = this.keyAttributeMap.get(key);
+		List<AttributeKey> attributeList = this.keyAttributeMap.get(key);
 		
-		Iterator<String> it = attributeList.listIterator();
+		Iterator<AttributeKey> it = attributeList.listIterator();
 		
 		while (it.hasNext()) {
-			String next = it.next();
+			AttributeKey next = it.next();
 			
-			value.setAttribute(next, this.attributeMap.get(next).get(key).toString());
+			value.setAttribute(next, this.attributeMap.get(next).get(key));
 		}
 		
 		return value;
 	}
 
 	@Override
-	public void put(String key, IValueAttribute<String, String> value) throws DataFormatIncorrectException {
+	public void put(Key key, IValueAttribute<AttributeKey, AttributeValue> value) throws DataFormatIncorrectException {
 		if (this.keyAttributeMap.containsKey(key)) {
 			this.deleteKey(key);
 		}
 		
-		List<String> attributeList = new ArrayList<String>();
+		List<AttributeKey> attributeList = new ArrayList<AttributeKey>();
 		
-		Iterator<String> it = value.getAttributeKeys().listIterator();
+		Iterator<AttributeKey> it = value.getAttributeKeys().listIterator();
 		
 		while (it.hasNext()) {
-			String attkey = it.next();
+			AttributeKey attkey = it.next();
 			
-			String attValue = value.getAttribute(attkey);
+			AttributeValue attValue = value.getAttribute(attkey);
 			
 			if (!attributeMap.containsKey(attkey)) {
 				this.attributeMap.put(attkey, attributeKeyValueMapFactory.createAttributeKeyValueMap(attValue));
@@ -76,24 +76,22 @@ public class KeyValueMap implements IKeyValueMap {
 		
 		this.keyAttributeMap.put(key, attributeList);
 		
-		System.out.println(this.attributeMap + " " + this.attributeMap.get("att1").get(key));
-		
 	}
 
 	@Override
-	public List<String> getKeyContainingAttributeKeyValuePair(String attribute, String value) throws DataFormatIncorrectException {
+	public List<Key> getKeyContainingAttributeKeyValuePair(AttributeKey attribute, AttributeValue value) throws DataFormatIncorrectException {
 		
 		if (!this.attributeMap.containsKey(attribute)) {
-			return new ArrayList<String>();
+			return new ArrayList<Key>();
 		}
 		return this.attributeMap.get(attribute).getkeysWithValues(value);
 	}
 
 	@Override
-	public List<String> getKeys() {
-		List<String> keys = new ArrayList<String>();
+	public List<Key> getKeys() {
+		List<Key> keys = new ArrayList<Key>();
 		
-		Iterator<String> it = this.keyAttributeMap.keySet().iterator();
+		Iterator<Key> it = this.keyAttributeMap.keySet().iterator();
 		
 		while (it.hasNext()) {
 			keys.add(it.next());
@@ -103,15 +101,15 @@ public class KeyValueMap implements IKeyValueMap {
 	}
 
 	@Override
-	public void deleteKey(String key) {
+	public void deleteKey(Key key) {
 		if (!this.keyAttributeMap.containsKey(key)) {
 			return;
 		}
 		
-		Iterator<String> it  = this.keyAttributeMap.get(key).listIterator();
+		Iterator<AttributeKey> it  = this.keyAttributeMap.get(key).listIterator();
 		
 		while (it.hasNext()) {
-			String attribute = it.next();
+			AttributeKey attribute = it.next();
 			
 			
 			this.attributeMap.get(attribute).deleteKey(key);

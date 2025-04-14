@@ -10,29 +10,29 @@ import com.factories.interfaces.IAttributeKeyValueMapFactory;
 public class AttributeKeyValueMapFactory implements IAttributeKeyValueMapFactory {
 
 	@Override
-	public IAttributeKeyValueMap createAttributeKeyValueMap(String value) {
+	public <Key, Value> IAttributeKeyValueMap<Key, Value> createAttributeKeyValueMap(Value value) {
 		try {
-			Integer.parseInt(value);
+			Integer.parseInt(value.toString());
 			
-			return new IntegerAttributeKeyValueMap();
+			return new IntegerAttributeKeyValueMap<Key, Value>();
 		} catch (Exception e) {
 			// do nothing
 		}
 		
 		try {
-			Double.parseDouble(value);
+			Double.parseDouble(value.toString());
 			
-			return new DoubleAttributeKeyValueMap();
+			return new DoubleAttributeKeyValueMap<Key, Value>();
 		} catch (Exception e) {
 			// Do nothing
 		}
 		
 		try {
-			Boolean.parseBoolean(value);
+			Boolean.parseBoolean(value.toString());
 			
-			return new BooleanAttributeKeyValueMap();
+			return new BooleanAttributeKeyValueMap<Key, Value>();
 		} catch (Exception e) {
-			return new StringAttributekeyValueMap();
+			return new StringAttributekeyValueMap<Key, Value>();
 		}
 	}
 

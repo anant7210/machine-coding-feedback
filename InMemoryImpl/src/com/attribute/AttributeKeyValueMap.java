@@ -9,49 +9,57 @@ import java.util.List;
 import com.attribute.interfaces.IAttributeKeyValueMap;
 import com.exceptions.DataFormatIncorrectException;
 
-public abstract class AttributeKeyValueMap<T extends Object> implements IAttributeKeyValueMap {
+public abstract class AttributeKeyValueMap<T extends Object, Key extends Object, Value extends Object> implements IAttributeKeyValueMap<Key, Value>
+{
 	
-	private HashMap<String, T> keyValueMap;
+	private HashMap<Key, T> keyValueMap;
 	
-	private HashMap<T, HashSet<String>> valueKeyMap;
+	private HashMap<T, HashSet<Key>> valueKeyMap;
+	
+	private HashMap<T, Value> tValueMap;
 	
 	
 
 	public AttributeKeyValueMap() {
 		this.keyValueMap = new HashMap<>();
-		this.valueKeyMap = new HashMap<T, HashSet<String>>();
+		this.valueKeyMap = new HashMap<T, HashSet<Key>>();
+		this.tValueMap = new HashMap<T, Value>();
 	}
 	
-	protected abstract T getValueAsT(String value) throws DataFormatIncorrectException;
+	protected abstract T getValueAsT(Value value) throws DataFormatIncorrectException;
 	
 	@Override
-	public abstract boolean isValidType(String value);
+	public abstract boolean isValidType(Value value);
 
 	@Override
-	public String get(String key) {
+	public Value get(Key key) {
 		if (!keyValueMap.containsKey(key)) {
 			
 		}
-		return this.getValueAsString(this.keyValueMap.get(key));
+		return this.getValue(this.keyValueMap.get(key));
 	}
 
 	@Override
-	public void put(String key, String value) throws DataFormatIncorrectException {
+	public void put(Key key, Value value) throws DataFormatIncorrectException {
 		if (!isValidType(value)) {
 			throw new DataFormatIncorrectException();
+		}
+		
+		if (this.keyValueMap.containsKey(key)) {
+			this.valueKeyMap.remove(this.keyValueMap.get(key));
 		}
 		this.keyValueMap.put(key, this.getValueAsT(value));	
 		
 		if (!this.valueKeyMap.containsKey(this.getValueAsT(value))) {
-			this.valueKeyMap.put(this.getValueAsT(value), new HashSet<String>());
+			this.valueKeyMap.put(this.getValueAsT(value), new HashSet<Key>());
 		}
 		
 		this.valueKeyMap.get(this.getValueAsT(value)).add(key);
-
+		this.tValueMap.put(this.getValueAsT(value), value);
 	}
 
 	@Override
-	public boolean containsKey(String key) {
+	public boolean containsKey(Key key) {
 		if (this.keyValueMap.containsKey(key)) {
 			return true;
 		}
@@ -62,19 +70,19 @@ public abstract class AttributeKeyValueMap<T extends Object> implements IAttribu
 	
 
 	@Override
-	public List<String> getkeysWithValues(String value) throws DataFormatIncorrectException {
+	public List<Key> getkeysWithValues(Value value) throws DataFormatIncorrectException {
 		
 		if (!this.isValidType(value)) {
-			return new ArrayList<String>();
+			return new ArrayList<Key>();
 		}
 		
-		List<String> result  = new ArrayList<String>();
+		List<Key> result  = new ArrayList<Key>();
 		
 		if (!this.valueKeyMap.containsKey(this.getValueAsT(value))) {
-			return new ArrayList<String>();
+			return new ArrayList<Key>();
 		}
 		
-		Iterator<String> it = this.valueKeyMap.get(getValueAsT(value)).iterator();
+		Iterator<Key> it = this.valueKeyMap.get(getValueAsT(value)).iterator();
 		
 		while (it.hasNext()) {
 			result.add(it.next());
@@ -86,7 +94,7 @@ public abstract class AttributeKeyValueMap<T extends Object> implements IAttribu
 	
 	
 	@Override
-	public void deleteKey(String key) {
+	public void deleteKey(Key key) {
 		if (!this.keyValueMap.containsKey(key)) {
 			return;
 		}
@@ -94,15 +102,13 @@ public abstract class AttributeKeyValueMap<T extends Object> implements IAttribu
 	}
 	
 	
-
-	
 	@Override
 	public String toString() {
 		return "AttributeKeyValueMap [keyValueMap=" + keyValueMap + ", valueKeyMap=" + valueKeyMap + "]";
 	}
 
-	protected String getValueAsString(T obj) {
-		return obj.toString();
+	protected Value getValue(T obj) {
+		return this.tValueMap.get(obj);
 	}
 
 }
